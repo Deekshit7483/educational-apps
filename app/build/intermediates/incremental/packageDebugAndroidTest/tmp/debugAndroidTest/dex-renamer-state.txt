@@ -1,0 +1,7 @@
+#Thu Jan 04 17:10:23 GMT 2024
+base.0=/home/chandan/Downloads/NewProject/NewProject52/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/0/classes.dex
+base.1=/home/chandan/Downloads/NewProject/NewProject52/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/7/classes.dex
+path.0=0/classes.dex
+path.1=7/classes.dex
+renamed.0=classes.dex
+renamed.1=classes2.dex

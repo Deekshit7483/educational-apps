@@ -1,0 +1,5 @@
+com.my.newproject52_1.app-androidTest-0 /home/chandan/Downloads/NewProject/NewProject52/app/build/generated/res/resValues/androidTest/debug
+com.my.newproject52_1.app-androidTest-1 /home/chandan/Downloads/NewProject/NewProject52/app/build/generated/res/rs/androidTest/debug
+com.my.newproject52_1.app-mergeDebugAndroidTestResources-2 /home/chandan/Downloads/NewProject/NewProject52/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+com.my.newproject52_1.app-mergeDebugAndroidTestResources-3 /home/chandan/Downloads/NewProject/NewProject52/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+com.my.newproject52_1.app-merged_res-4 /home/chandan/Downloads/NewProject/NewProject52/app/build/intermediates/merged_res/debugAndroidTest

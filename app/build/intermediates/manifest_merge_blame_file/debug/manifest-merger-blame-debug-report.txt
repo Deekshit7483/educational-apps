@@ -1,0 +1,265 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.my.newproject52"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:5:2-64
+11-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:5:19-61
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:6:2-76
+12-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:6:19-73
+13    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+13-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:7:2-77
+13-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:7:19-74
+14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+14-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:8:2-78
+14-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:8:19-75
+15
+16    <application
+16-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:9:2-112:16
+17        android:allowBackup="true"
+17-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:10:3-29
+18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+18-->[androidx.core:core:1.5.0] /home/chandan/.gradle/caches/transforms-3/86cbc0e1560648ec48358638178f8802/transformed/core-1.5.0/AndroidManifest.xml:24:18-86
+19        android:debuggable="true"
+20        android:icon="@drawable/app_icon"
+20-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:12:3-36
+21        android:label="@string/app_name"
+21-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:13:3-35
+22        android:requestLegacyExternalStorage="true"
+22-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:11:9-52
+23        android:testOnly="true"
+24        android:theme="@style/AppTheme"
+24-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:15:3-34
+25        android:usesCleartextTraffic="true" >
+25-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:14:3-38
+26        <activity
+26-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:16:3-27:14
+27            android:name="com.my.newproject52.MainActivity"
+27-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:17:4-32
+28            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+28-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:18:4-97
+29            android:hardwareAccelerated="true"
+29-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:19:4-38
+30            android:screenOrientation="portrait"
+30-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:22:4-40
+31            android:supportsPictureInPicture="true"
+31-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:20:4-43
+32            android:theme="@style/AppTheme.FullScreen" >
+32-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:21:4-46
+33            <intent-filter>
+33-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:23:4-26:20
+34                <action android:name="android.intent.action.MAIN" />
+34-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:24:5-57
+34-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:24:13-54
+35
+36                <category android:name="android.intent.category.LAUNCHER" />
+36-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:25:5-65
+36-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:25:15-62
+37            </intent-filter>
+38        </activity>
+39        <activity
+39-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:28:3-33:43
+40            android:name="com.my.newproject52.LoginActivity"
+40-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:29:4-33
+41            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+41-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:30:4-97
+42            android:hardwareAccelerated="true"
+42-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:31:4-38
+43            android:screenOrientation="portrait"
+43-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:33:4-40
+44            android:supportsPictureInPicture="true" />
+44-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:32:4-43
+45        <activity
+45-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:34:3-39:43
+46            android:name="com.my.newproject52.RegisterActivity"
+46-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:35:4-36
+47            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+47-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:36:4-97
+48            android:hardwareAccelerated="true"
+48-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:37:4-38
+49            android:screenOrientation="portrait"
+49-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:39:4-40
+50            android:supportsPictureInPicture="true" />
+50-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:38:4-43
+51        <activity
+51-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:40:3-45:43
+52            android:name="com.my.newproject52.HomeActivity"
+52-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:41:4-32
+53            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+53-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:42:4-97
+54            android:hardwareAccelerated="true"
+54-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:43:4-38
+55            android:screenOrientation="portrait"
+55-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:45:4-40
+56            android:supportsPictureInPicture="true" />
+56-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:44:4-43
+57        <activity
+57-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:46:3-51:43
+58            android:name="com.my.newproject52.InformationActivity"
+58-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:47:4-39
+59            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+59-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:48:4-97
+60            android:hardwareAccelerated="true"
+60-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:49:4-38
+61            android:screenOrientation="portrait"
+61-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:51:4-40
+62            android:supportsPictureInPicture="true" />
+62-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:50:4-43
+63        <activity
+63-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:52:3-57:43
+64            android:name="com.my.newproject52.CreateGroupActivity"
+64-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:53:4-39
+65            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+65-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:54:4-97
+66            android:hardwareAccelerated="true"
+66-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:55:4-38
+67            android:screenOrientation="portrait"
+67-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:57:4-40
+68            android:supportsPictureInPicture="true" />
+68-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:56:4-43
+69        <activity
+69-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:58:3-63:43
+70            android:name="com.my.newproject52.GroupChatActivity"
+70-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:59:4-37
+71            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+71-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:60:4-97
+72            android:hardwareAccelerated="true"
+72-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:61:4-38
+73            android:screenOrientation="portrait"
+73-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:63:4-40
+74            android:supportsPictureInPicture="true" />
+74-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:62:4-43
+75        <activity
+75-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:64:3-69:43
+76            android:name="com.my.newproject52.FilesActivity"
+76-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:65:4-33
+77            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+77-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:66:4-97
+78            android:hardwareAccelerated="true"
+78-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:67:4-38
+79            android:screenOrientation="portrait"
+79-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:69:4-40
+80            android:supportsPictureInPicture="true" />
+80-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:68:4-43
+81        <activity
+81-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:70:3-75:43
+82            android:name="com.my.newproject52.ShareFileActivity"
+82-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:71:4-37
+83            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+83-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:72:4-97
+84            android:hardwareAccelerated="true"
+84-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:73:4-38
+85            android:screenOrientation="portrait"
+85-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:75:4-40
+86            android:supportsPictureInPicture="true" />
+86-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:74:4-43
+87        <activity
+87-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:76:3-81:43
+88            android:name="com.my.newproject52.AddEventActivity"
+88-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:77:4-36
+89            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+89-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:78:4-97
+90            android:hardwareAccelerated="true"
+90-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:79:4-38
+91            android:screenOrientation="portrait"
+91-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:81:4-40
+92            android:supportsPictureInPicture="true" />
+92-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:80:4-43
+93        <activity
+93-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:82:3-87:43
+94            android:name="com.my.newproject52.EditProfileActivity"
+94-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:83:4-39
+95            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+95-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:84:4-97
+96            android:hardwareAccelerated="true"
+96-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:85:4-38
+97            android:screenOrientation="portrait"
+97-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:87:4-40
+98            android:supportsPictureInPicture="true" />
+98-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:86:4-43
+99
+100        <meta-data
+100-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:88:3-90:60
+101            android:name="com.google.android.gms.version"
+101-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:89:4-49
+102            android:value="@integer/google_play_services_version" />
+102-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:90:4-57
+103
+104        <provider
+104-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:91:3-95:30
+105            android:name="com.google.firebase.provider.FirebaseInitProvider"
+105-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:92:4-68
+106            android:authorities="com.my.newproject52.firebaseinitprovider"
+106-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:93:4-66
+107            android:exported="false"
+107-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:94:4-28
+108            android:initOrder="100" />
+108-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:95:4-27
+109
+110        <service
+110-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:96:3-108:13
+111            android:name="com.google.firebase.components.ComponentDiscoveryService"
+111-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:97:4-75
+112            android:exported="false" >
+112-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:98:4-28
+113            <meta-data
+113-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:99:4-101:73
+114                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+114-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:100:5-97
+115                android:value="com.google.firebase.components.ComponentRegistrar" />
+115-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:101:5-70
+116            <meta-data
+116-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:102:4-104:73
+117                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+117-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:103:5-97
+118                android:value="com.google.firebase.components.ComponentRegistrar" />
+118-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:104:5-70
+119            <meta-data
+119-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:105:4-107:73
+120                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+120-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:106:5-95
+121                android:value="com.google.firebase.components.ComponentRegistrar" />
+121-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:107:5-70
+122        </service>
+123
+124        <uses-library
+124-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:109:3-111:31
+125            android:name="org.apache.http.legacy"
+125-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:110:4-41
+126            android:required="false" />
+126-->/home/chandan/Downloads/NewProject/NewProject52/app/src/main/AndroidManifest.xml:111:4-28
+127
+128        <activity
+128-->[com.google.firebase:firebase-auth:19.0.0] /home/chandan/.gradle/caches/transforms-3/faef80f17f6d07cb6f2af5e7f3869561/transformed/jetified-firebase-auth-19.0.0/AndroidManifest.xml:24:9-31:50
+129            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
+129-->[com.google.firebase:firebase-auth:19.0.0] /home/chandan/.gradle/caches/transforms-3/faef80f17f6d07cb6f2af5e7f3869561/transformed/jetified-firebase-auth-19.0.0/AndroidManifest.xml:25:13-85
+130            android:excludeFromRecents="true"
+130-->[com.google.firebase:firebase-auth:19.0.0] /home/chandan/.gradle/caches/transforms-3/faef80f17f6d07cb6f2af5e7f3869561/transformed/jetified-firebase-auth-19.0.0/AndroidManifest.xml:26:13-46
+131            android:exported="true"
+131-->[com.google.firebase:firebase-auth:19.0.0] /home/chandan/.gradle/caches/transforms-3/faef80f17f6d07cb6f2af5e7f3869561/transformed/jetified-firebase-auth-19.0.0/AndroidManifest.xml:27:13-36
+132            android:launchMode="singleTask"
+132-->[com.google.firebase:firebase-auth:19.0.0] /home/chandan/.gradle/caches/transforms-3/faef80f17f6d07cb6f2af5e7f3869561/transformed/jetified-firebase-auth-19.0.0/AndroidManifest.xml:28:13-44
+133            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
+133-->[com.google.firebase:firebase-auth:19.0.0] /home/chandan/.gradle/caches/transforms-3/faef80f17f6d07cb6f2af5e7f3869561/transformed/jetified-firebase-auth-19.0.0/AndroidManifest.xml:29:13-102
+134            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+134-->[com.google.firebase:firebase-auth:19.0.0] /home/chandan/.gradle/caches/transforms-3/faef80f17f6d07cb6f2af5e7f3869561/transformed/jetified-firebase-auth-19.0.0/AndroidManifest.xml:30:13-72
+135        <activity
+135-->[com.google.android.gms:play-services-base:17.1.0] /home/chandan/.gradle/caches/transforms-3/d8ccb5ded020133dca431f1df2538ac7/transformed/jetified-play-services-base-17.1.0/AndroidManifest.xml:23:9-26:75
+136            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+136-->[com.google.android.gms:play-services-base:17.1.0] /home/chandan/.gradle/caches/transforms-3/d8ccb5ded020133dca431f1df2538ac7/transformed/jetified-play-services-base-17.1.0/AndroidManifest.xml:24:13-79
+137            android:exported="false"
+137-->[com.google.android.gms:play-services-base:17.1.0] /home/chandan/.gradle/caches/transforms-3/d8ccb5ded020133dca431f1df2538ac7/transformed/jetified-play-services-base-17.1.0/AndroidManifest.xml:25:13-37
+138            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+138-->[com.google.android.gms:play-services-base:17.1.0] /home/chandan/.gradle/caches/transforms-3/d8ccb5ded020133dca431f1df2538ac7/transformed/jetified-play-services-base-17.1.0/AndroidManifest.xml:26:13-72
+139    </application>
+140
+141</manifest>
