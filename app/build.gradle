@@ -8,8 +8,7 @@ android {
 	useLibrary 'org.apache.http.legacy'
 	namespace = "com.my.newproject52"
 	testNamespace = "com.my.newproject52_1"
-
-
+	
 	defaultConfig {
 		applicationId "com.my.newproject52"
 		minSdkVersion 21

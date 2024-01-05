@@ -30,20 +30,20 @@
 			android:orientation="vertical">
 			<LinearLayout
 				android:id="@+id/tools"
-				android:layout_width="wrap_content"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:gravity="center_horizontal|center_vertical"
 				android:orientation="vertical"
 				android:layout_gravity="left">
 				<LinearLayout
 					android:id="@+id/tool"
-					android:layout_width="wrap_content"
+					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:gravity="center_horizontal|center_vertical"
 					android:orientation="horizontal">
 					<LinearLayout
 						android:id="@+id/linear21"
-						android:layout_width="match_parent"
+						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:orientation="horizontal">
 						<ImageView
@@ -70,10 +70,11 @@
 					</LinearLayout>
 					<LinearLayout
 						android:id="@+id/linear_nm"
-						android:layout_width="match_parent"
+						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginLeft="8dp"
-						android:orientation="vertical">
+						android:orientation="vertical"
+						android:layout_weight="1">
 						<LinearLayout
 							android:id="@+id/linear_n"
 							android:layout_width="wrap_content"
@@ -103,6 +104,12 @@
 							android:textSize="14sp"
 							android:textColor="#EEEEEE" />
 					</LinearLayout>
+					<ImageView
+						android:id="@+id/imageview2"
+						android:layout_width="25dp"
+						android:layout_height="25dp"
+						android:src="@drawable/timetable"
+						android:scaleType="fitCenter" />
 				</LinearLayout>
 			</LinearLayout>
 			<ListView
@@ -165,7 +172,7 @@
 					android:layout_marginRight="8dp"
 					android:layout_marginBottom="8dp"
 					android:background="#009688"
-					android:src="@drawable/ic_mic_none_white"
+					android:src="@drawable/outline_send"
 					android:scaleType="center" />
 			</LinearLayout>
 		</LinearLayout>

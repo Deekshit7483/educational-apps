@@ -8,9 +8,9 @@
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<application
 		android:allowBackup="true"
-        android:requestLegacyExternalStorage="true"
 		android:icon="@drawable/app_icon"
 		android:label="@string/app_name"
+		android:requestLegacyExternalStorage="true"
 		android:usesCleartextTraffic="true"
 		android:theme="@style/AppTheme">
 		<activity
@@ -85,7 +85,13 @@
 			android:hardwareAccelerated="true"
 			android:supportsPictureInPicture="true"
 			android:screenOrientation="portrait" />
-		<meta-data
+		<activity
+			android:name=".TodolistActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true"
+			android:screenOrientation="portrait" />
+			<meta-data
 			android:name="com.google.android.gms.version"
 			android:value="@integer/google_play_services_version" />
 		<provider
@@ -109,5 +115,20 @@
 		<uses-library
 			android:name="org.apache.http.legacy"
 			android:required="false" />
+
+<activity
+	android:name=".SplashActivity"
+android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<action android:name="com.uptime.club.LAUNCH" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+			<data android:scheme="https"       android:host="pes.sloutionsfortech.in" />
+			<data android:scheme="http"       android:host="pes.sloutionsfortech.in" />
+
+			</intent-filter>
+
+</activity>
 	</application>
 </manifest>

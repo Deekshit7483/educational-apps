@@ -322,6 +322,8 @@ public class RegisterActivity extends AppCompatActivity {
 					map.put("email", FirebaseAuth.getInstance().getCurrentUser().getEmail());
 					map.put("uid", FirebaseAuth.getInstance().getCurrentUser().getUid());
 					map.put("password", password.getText().toString());
+					map.put("joined group", "");
+					map.put("pic", "");
 					data.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).updateChildren(map);
 					map.clear();
 					_ProgresbarDimiss();

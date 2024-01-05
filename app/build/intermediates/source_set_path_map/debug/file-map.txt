@@ -11,11 +11,11 @@ com.my.newproject52.app-jetified-play-services-basement-17.0.0-9 /home/chandan/.
 com.my.newproject52.app-jetified-glide-4.12.0-10 /home/chandan/.gradle/caches/transforms-3/de02bfdc79e70a39e63ee317f45c66e3/transformed/jetified-glide-4.12.0/res
 com.my.newproject52.app-coordinatorlayout-1.1.0-11 /home/chandan/.gradle/caches/transforms-3/eb7b22083feb43e9e4cdb8f5511a641f/transformed/coordinatorlayout-1.1.0/res
 com.my.newproject52.app-transition-1.2.0-12 /home/chandan/.gradle/caches/transforms-3/efdc2a2e298c4280c595f2dc3d0853e7/transformed/transition-1.2.0/res
-com.my.newproject52.app-pngs-13 /home/chandan/Downloads/NewProject/NewProject52/app/build/generated/res/pngs/debug
-com.my.newproject52.app-resValues-14 /home/chandan/Downloads/NewProject/NewProject52/app/build/generated/res/resValues/debug
-com.my.newproject52.app-rs-15 /home/chandan/Downloads/NewProject/NewProject52/app/build/generated/res/rs/debug
-com.my.newproject52.app-mergeDebugResources-16 /home/chandan/Downloads/NewProject/NewProject52/app/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
-com.my.newproject52.app-mergeDebugResources-17 /home/chandan/Downloads/NewProject/NewProject52/app/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
-com.my.newproject52.app-merged_res-18 /home/chandan/Downloads/NewProject/NewProject52/app/build/intermediates/merged_res/debug
-com.my.newproject52.app-debug-19 /home/chandan/Downloads/NewProject/NewProject52/app/src/debug/res
-com.my.newproject52.app-main-20 /home/chandan/Downloads/NewProject/NewProject52/app/src/main/res
+com.my.newproject52.app-pngs-13 /home/chandan/Downloads/NewProject52 (2)/NewProject52/app/build/generated/res/pngs/debug
+com.my.newproject52.app-resValues-14 /home/chandan/Downloads/NewProject52 (2)/NewProject52/app/build/generated/res/resValues/debug
+com.my.newproject52.app-rs-15 /home/chandan/Downloads/NewProject52 (2)/NewProject52/app/build/generated/res/rs/debug
+com.my.newproject52.app-mergeDebugResources-16 /home/chandan/Downloads/NewProject52 (2)/NewProject52/app/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
+com.my.newproject52.app-mergeDebugResources-17 /home/chandan/Downloads/NewProject52 (2)/NewProject52/app/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+com.my.newproject52.app-merged_res-18 /home/chandan/Downloads/NewProject52 (2)/NewProject52/app/build/intermediates/merged_res/debug
+com.my.newproject52.app-debug-19 /home/chandan/Downloads/NewProject52 (2)/NewProject52/app/src/debug/res
+com.my.newproject52.app-main-20 /home/chandan/Downloads/NewProject52 (2)/NewProject52/app/src/main/res

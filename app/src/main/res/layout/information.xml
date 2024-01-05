@@ -23,9 +23,9 @@
 			app:cardCornerRadius="20dp">
 			<ImageView
 				android:id="@+id/imageview4"
-				android:layout_width="60dp"
-				android:layout_height="60dp"
-				android:src="@drawable/default_image"
+				android:layout_width="70dp"
+				android:layout_height="70dp"
+				android:src="@drawable/logoo"
 				android:scaleType="centerCrop" />
 		</androidx.cardview.widget.CardView>
 		<TextView
@@ -34,7 +34,7 @@
 			android:layout_height="wrap_content"
 			android:layout_marginBottom="15dp"
 			android:padding="8dp"
-			android:text="app name"
+			android:text="Study Companion"
 			android:textSize="25sp"
 			android:textStyle="bold"
 			android:textColor="#FFFFFF" />
@@ -92,7 +92,7 @@
 						android:layout_height="200dp"
 						android:layout_marginTop="50dp"
 						android:layout_marginBottom="5dp"
-						android:src="@drawable/graduation"
+						android:src="@drawable/loading_2"
 						android:scaleType="fitCenter"
 						android:layout_weight="1" />
 					<TextView
@@ -100,7 +100,7 @@
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginTop="20dp"
-						android:text="Title"
+						android:text="To-Do list &amp; scheduling"
 						android:textSize="20sp"
 						android:textStyle="bold"
 						android:textColor="#000000"
@@ -112,7 +112,7 @@
 						android:layout_marginLeft="20dp"
 						android:layout_marginTop="1dp"
 						android:layout_marginRight="15dp"
-						android:text="Study materiel, Notes ,Questions papers,           \n                        Question banks "
+						android:text="Creating task lists and setting reminders for the tasks.. "
 						android:textSize="16sp"
 						android:textColor="#000000"
 						android:layout_gravity="center_horizontal|center_vertical"
@@ -129,6 +129,7 @@
 						android:id="@+id/imageview5"
 						android:layout_width="250dp"
 						android:layout_height="200dp"
+						android:layout_marginTop="20dp"
 						android:layout_marginBottom="5dp"
 						android:paddingTop="50dp"
 						android:src="@drawable/custome"
@@ -137,8 +138,8 @@
 						android:id="@+id/textview4"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_marginTop="50dp"
-						android:text="Title"
+						android:layout_marginTop="60dp"
+						android:text="Group chat"
 						android:textSize="20sp"
 						android:textStyle="bold"
 						android:textColor="#000000" />
@@ -147,9 +148,9 @@
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginLeft="20dp"
-						android:layout_marginTop="5dp"
+						android:layout_marginTop="30dp"
 						android:layout_marginRight="15dp"
-						android:text="Description description description description"
+						android:text="Group chat and doubt clearance"
 						android:textSize="16sp"
 						android:textColor="#000000"
 						android:layout_gravity="center_horizontal|center_vertical" />
@@ -167,14 +168,14 @@
 						android:layout_height="200dp"
 						android:layout_marginTop="50dp"
 						android:layout_marginBottom="5dp"
-						android:src="@drawable/group"
+						android:src="@drawable/loading_1"
 						android:scaleType="fitCenter" />
 					<TextView
 						android:id="@+id/textview6"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_marginTop="40dp"
-						android:text="Groups Chat &amp; Doubts Clarify"
+						android:layout_marginTop="50dp"
+						android:text="Live test and Progress"
 						android:textSize="20sp"
 						android:textStyle="bold"
 						android:textColor="#000000" />
@@ -183,9 +184,9 @@
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginLeft="20dp"
-						android:layout_marginTop="10dp"
+						android:layout_marginTop="25dp"
 						android:layout_marginRight="15dp"
-						android:text="Discuss The Doubts &amp; get Clarified using    \n              Group Chat"
+						android:text="Live test and students progress tracking.. "
 						android:textSize="16sp"
 						android:textColor="#000000"
 						android:layout_gravity="center_horizontal|center_vertical" />

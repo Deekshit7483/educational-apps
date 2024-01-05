@@ -92,6 +92,9 @@ public class GroupChatActivity extends AppCompatActivity {
 	private String groupstr = "";
 	private String imagePath = "";
 	private String imageName = "";
+	private String uid2 = "";
+	private String chat_str = "";
+	private String share = "";
 	
 	private ArrayList<HashMap<String, Object>> msgs_lm = new ArrayList<>();
 	private ArrayList<String> uids = new ArrayList<>();
@@ -104,6 +107,7 @@ public class GroupChatActivity extends AppCompatActivity {
 	private LinearLayout tool;
 	private LinearLayout linear21;
 	private LinearLayout linear_nm;
+	private ImageView imageview2;
 	private ImageView avatar;
 	private LinearLayout l_word;
 	private TextView tx_word;
@@ -144,6 +148,9 @@ public class GroupChatActivity extends AppCompatActivity {
 	private OnProgressListener _image_download_progress_listener;
 	private OnFailureListener _image_failure_listener;
 	
+	private Intent i = new Intent();
+	private DatabaseReference groups = _firebase.getReference("groups");
+	private ChildEventListener _groups_child_listener;
 	
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
@@ -188,6 +195,7 @@ public class GroupChatActivity extends AppCompatActivity {
 		tool = findViewById(R.id.tool);
 		linear21 = findViewById(R.id.linear21);
 		linear_nm = findViewById(R.id.linear_nm);
+		imageview2 = findViewById(R.id.imageview2);
 		avatar = findViewById(R.id.avatar);
 		l_word = findViewById(R.id.l_word);
 		tx_word = findViewById(R.id.tx_word);
@@ -203,6 +211,14 @@ public class GroupChatActivity extends AppCompatActivity {
 		dDelete = new AlertDialog.Builder(this);
 		fp.setType("image/*");
 		fp.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+		
+		tool.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				i.setClass(getApplicationContext(), AddEventActivity.class);
+				startActivity(i);
+			}
+		});
 		
 		im_send.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -294,12 +310,6 @@ public class GroupChatActivity extends AppCompatActivity {
 				if (_childValue.get("uid").toString().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
 					name = _childValue.get("username").toString();
 					groupstr = _childValue.get("joined group").toString();
-				}
-				if (groupstr.contains(key)) {
-					linear_msg_main.setVisibility(View.VISIBLE);
-				}
-				else {
-					linear_msg_main.setVisibility(View.GONE);
 				}
 			}
 			
@@ -396,6 +406,45 @@ public class GroupChatActivity extends AppCompatActivity {
 			}
 		};
 		
+		_groups_child_listener = new ChildEventListener() {
+			@Override
+			public void onChildAdded(DataSnapshot _param1, String _param2) {
+				GenericTypeIndicator<HashMap<String, Object>> _ind = new GenericTypeIndicator<HashMap<String, Object>>() {};
+				final String _childKey = _param1.getKey();
+				final HashMap<String, Object> _childValue = _param1.getValue(_ind);
+				
+			}
+			
+			@Override
+			public void onChildChanged(DataSnapshot _param1, String _param2) {
+				GenericTypeIndicator<HashMap<String, Object>> _ind = new GenericTypeIndicator<HashMap<String, Object>>() {};
+				final String _childKey = _param1.getKey();
+				final HashMap<String, Object> _childValue = _param1.getValue(_ind);
+				
+			}
+			
+			@Override
+			public void onChildMoved(DataSnapshot _param1, String _param2) {
+				
+			}
+			
+			@Override
+			public void onChildRemoved(DataSnapshot _param1) {
+				GenericTypeIndicator<HashMap<String, Object>> _ind = new GenericTypeIndicator<HashMap<String, Object>>() {};
+				final String _childKey = _param1.getKey();
+				final HashMap<String, Object> _childValue = _param1.getValue(_ind);
+				
+			}
+			
+			@Override
+			public void onCancelled(DatabaseError _param1) {
+				final int _errorCode = _param1.getCode();
+				final String _errorMessage = _param1.getMessage();
+				
+			}
+		};
+		groups.addChildEventListener(_groups_child_listener);
+		
 		fauth_updateEmailListener = new OnCompleteListener<Void>() {
 			@Override
 			public void onComplete(Task<Void> _param1) {
@@ -489,7 +538,6 @@ public class GroupChatActivity extends AppCompatActivity {
 	private void initializeLogic() {
 		listview1.setAdapter(new Listview1Adapter(msgs_lm));
 		key = getIntent().getStringExtra("group id");
-		username.setText(getIntent().getStringExtra("group name"));
 		getSupportActionBar().setTitle(null);
 		
 		getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -508,6 +556,9 @@ public class GroupChatActivity extends AppCompatActivity {
 		appBar.setStateListAnimator(null);
 		l_word.setVisibility(View.GONE);
 		avatar.setVisibility(View.GONE);
+		_rippleRoundStroke(im_send, "#009688", "#FFFFFF", 500, 0, "#FFFFFF");
+		_Shadow(2, 60, "#FFFFFF", linear_message);
+		username.setText(getIntent().getStringExtra("group name"));
 		if (getIntent().getStringExtra("group dp").equals("")) {
 			l_word.setVisibility(View.VISIBLE);
 			tx_word.setText(getIntent().getStringExtra("group name").substring((int)(0), (int)(2)).toUpperCase());
@@ -517,8 +568,6 @@ public class GroupChatActivity extends AppCompatActivity {
 			Glide.with(getApplicationContext()).load(Uri.parse(getIntent().getStringExtra("group dp"))).into(avatar);
 			avatar.setVisibility(View.VISIBLE);
 		}
-		_rippleRoundStroke(im_send, "#009688", "#FFFFFF", 500, 0, "#FFFFFF");
-		_Shadow(2, 60, "#FFFFFF", linear_message);
 	}
 	
 	@Override
@@ -582,6 +631,140 @@ public class GroupChatActivity extends AppCompatActivity {
 		_view.setElevation(5);
 	}
 	
+	
+	public void _SX_CornerRadius_4(final View _view, final String _color1, final String _color2, final double _str, final double _n1, final double _n2, final double _n3, final double _n4) {
+		android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable();
+		
+		gd.setColor(Color.parseColor(_color1));
+		
+		gd.setStroke((int)_str, Color.parseColor(_color2));
+		
+		gd.setCornerRadii(new float[]{(int)_n1,(int)_n1,(int)_n2,(int)_n2,(int)_n3,(int)_n3,(int)_n4,(int)_n4});
+		
+		_view.setBackground(gd);
+		
+		_view.setElevation(2);
+	}
+	
+	
+	public void _setRadius(final double _position, final boolean _my_user_id, final ArrayList<HashMap<String, Object>> _listmap, final View _linear_layout) {
+		if (_my_user_id) {
+			if (_position == 0) {
+				_SX_CornerRadius_4(_linear_layout, "#009688", "#009688", 0, 50, 50, 3, 50);
+				if (_listmap.size() == 1) {
+					_SX_CornerRadius_4(_linear_layout, "#009688", "#009688", 0, 50, 50, 50, 50);
+				}
+				else {
+					if (!_listmap.get((int)_position).get("uid").toString().equals(_listmap.get((int)_position + 1).get("uid").toString())) {
+						_SX_CornerRadius_4(_linear_layout, "#009688", "#009688", 0, 50, 50, 50, 50);
+					}
+				}
+			}
+			else {
+				if (!_listmap.get((int)_position).get("uid").toString().equals(_listmap.get((int)_position - 1).get("uid").toString())) {
+					_SX_CornerRadius_4(_linear_layout, "#009688", "#009688", 0, 50, 50, 3, 50);
+					if (_position == (_listmap.size() - 1)) {
+						_SX_CornerRadius_4(_linear_layout, "#009688", "#009688", 0, 50, 50, 50, 50);
+					}
+					else {
+						if (!_listmap.get((int)_position).get("uid").toString().equals(_listmap.get((int)_position + 1).get("uid").toString())) {
+							_SX_CornerRadius_4(_linear_layout, "#009688", "#009688", 0, 50, 50, 50, 50);
+						}
+					}
+				}
+				else {
+					if (_position == (_listmap.size() - 1)) {
+						if (_listmap.get((int)_position).get("uid").toString().equals(_listmap.get((int)_position - 1).get("uid").toString())) {
+							_SX_CornerRadius_4(_linear_layout, "#009688", "#009688", 0, 50, 3, 50, 50);
+						}
+						else {
+							_SX_CornerRadius_4(_linear_layout, "#009688", "#009688", 0, 50, 50, 50, 50);
+						}
+					}
+					else {
+						if (_listmap.get((int)_position).get("uid").toString().equals(_listmap.get((int)_position - 1).get("uid").toString()) && _listmap.get((int)_position).get("uid").toString().equals(_listmap.get((int)_position + 1).get("uid").toString())) {
+							_SX_CornerRadius_4(_linear_layout, "#009688", "#009688", 0, 50, 3, 3, 50);
+						}
+						else {
+							if (_listmap.get((int)_position).get("uid").toString().equals(_listmap.get((int)_position + 1).get("uid").toString())) {
+								_SX_CornerRadius_4(_linear_layout, "#009688", "#009688", 0, 50, 50, 3, 50);
+							}
+							else {
+								_SX_CornerRadius_4(_linear_layout, "#009688", "#009688", 0, 50, 3, 50, 50);
+							}
+						}
+					}
+				}
+			}
+		}
+		else {
+			if (_position == 0) {
+				_SX_CornerRadius_4(_linear_layout, "#F5F5F5", "#F5F5F5", 0, 50, 50, 50, 3);
+				if (_listmap.size() == 1) {
+					_SX_CornerRadius_4(_linear_layout, "#F5F5F5", "#F5F5F5", 0, 50, 50, 50, 50);
+				}
+				else {
+					if (!_listmap.get((int)_position).get("uid").toString().equals(_listmap.get((int)_position + 1).get("uid").toString())) {
+						_SX_CornerRadius_4(_linear_layout, "#F5F5F5", "#F5F5F5", 0, 50, 50, 50, 50);
+					}
+				}
+			}
+			else {
+				if (!_listmap.get((int)_position).get("uid").toString().equals(_listmap.get((int)_position - 1).get("uid").toString())) {
+					_SX_CornerRadius_4(_linear_layout, "#F5F5F5", "#F5F5F5", 0, 50, 50, 50, 3);
+				}
+				else {
+					if (_position == (_listmap.size() - 1)) {
+						if (_listmap.get((int)_position).get("uid").toString().equals(_listmap.get((int)_position - 1).get("uid").toString())) {
+							_SX_CornerRadius_4(_linear_layout, "#F5F5F5", "#F5F5F5", 0, 3, 50, 50, 50);
+						}
+						else {
+							_SX_CornerRadius_4(_linear_layout, "#F5F5F5", "#F5F5F5", 0, 50, 50, 50, 50);
+						}
+					}
+					else {
+						if (_listmap.get((int)_position).get("uid").toString().equals(_listmap.get((int)_position - 1).get("uid").toString()) && _listmap.get((int)_position).get("uid").toString().equals(_listmap.get((int)_position + 1).get("uid").toString())) {
+							_SX_CornerRadius_4(_linear_layout, "#F5F5F5", "#F5F5F5", 0, 3, 50, 50, 3);
+						}
+						else {
+							if (_listmap.get((int)_position).get("uid").toString().equals(_listmap.get((int)_position + 1).get("uid").toString())) {
+								_SX_CornerRadius_4(_linear_layout, "#F5F5F5", "#F5F5F5", 0, 50, 50, 50, 3);
+							}
+							else {
+								_SX_CornerRadius_4(_linear_layout, "#F5F5F5", "#F5F5F5", 0, 3, 50, 50, 50);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	
+	public void _Menu() {
+	}
+	@Override
+	public boolean onCreateOptionsMenu (Menu menu){
+		menu.add(0, 0, 0, "Share link");
+		menu.add(0, 1, 1, "Add list");
+		menu.add(0, 2, 2, "Wallpaper");
+		return true;
+	}
+	 @Override
+	public boolean onOptionsItemSelected(MenuItem item){
+		switch (item.getItemId()){
+			case 0:
+			share = "https://pes.sloutionsfortech.in/?type=group&id=".concat(key);
+			Intent i = new Intent(android.content.Intent.ACTION_SEND); i.setType("text/plain"); i.putExtra(android.content.Intent.EXTRA_TEXT,share); startActivity(Intent.createChooser(i,"Choose one.."));
+			break;
+			case 1:
+			break;
+			case 2:
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
 	public class Listview1Adapter extends BaseAdapter {
 		
 		ArrayList<HashMap<String, Object>> _data;
@@ -615,19 +798,39 @@ public class GroupChatActivity extends AppCompatActivity {
 			
 			final LinearLayout linear_main = _view.findViewById(R.id.linear_main);
 			final LinearLayout linear_item = _view.findViewById(R.id.linear_item);
-			final LinearLayout linear8 = _view.findViewById(R.id.linear8);
+			final LinearLayout linear_message = _view.findViewById(R.id.linear_message);
+			final LinearLayout l_voice = _view.findViewById(R.id.l_voice);
+			final LinearLayout linear_file = _view.findViewById(R.id.linear_file);
+			final ImageView thumbs = _view.findViewById(R.id.thumbs);
 			final ImageView imageview1 = _view.findViewById(R.id.imageview1);
-			final LinearLayout linear9 = _view.findViewById(R.id.linear9);
 			final TextView textview2 = _view.findViewById(R.id.textview2);
 			final LinearLayout linear_msg = _view.findViewById(R.id.linear_msg);
 			final TextView tx_sender_message = _view.findViewById(R.id.tx_sender_message);
 			final LinearLayout linear4 = _view.findViewById(R.id.linear4);
 			final TextView tx_msg_time = _view.findViewById(R.id.tx_msg_time);
+			final ImageView im_play = _view.findViewById(R.id.im_play);
+			final SeekBar seekbar1 = _view.findViewById(R.id.seekbar1);
+			final TextView tx_voice_name = _view.findViewById(R.id.tx_voice_name);
+			final ImageView im_file = _view.findViewById(R.id.im_file);
+			final TextView tx_file_name = _view.findViewById(R.id.tx_file_name);
 			
+			thumbs.setVisibility(View.GONE);
+			l_voice.setVisibility(View.GONE);
+			linear_file.setVisibility(View.GONE);
+			_Shadow(5, 10, "#FFFFFF", imageview1);
+			_Shadow(5, 10, "#FFFFFF", thumbs);
+			_Shadow(2, 10, "#FFFFFF", linear_file);
 			if (_data.get((int)_position).get("id").toString().equals(getIntent().getStringExtra("group id"))) {
 				if (_data.get((int)_position).get("uid").toString().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
 					linear_main.setGravity(Gravity.CENTER_VERTICAL|Gravity.RIGHT);
 					linear_item.setGravity(Gravity.CENTER_VERTICAL|Gravity.RIGHT);
+					tx_message.setTextColor(0xFFFFFFFF);
+					_setRadius(_position, true, _data, linear_message);
+					_setRadius(_position, true, _data, l_voice);
+					tx_voice_name.setTextColor(0xFFFFFFFF);
+					im_play.setColorFilter(0xFFFFFFFF, PorterDuff.Mode.MULTIPLY);
+					seekbar1.getProgressDrawable().setColorFilter(Color.parseColor("#FFFFFF"), PorterDuff.Mode.SRC_IN);
+					seekbar1.getThumb().setColorFilter(Color.parseColor("#FFFFFF"), PorterDuff.Mode.SRC_IN);
 					tx_message.setAutoLinkMask(android.text.util.Linkify.ALL);
 					    tx_message.setLinkTextColor(Color.parseColor("#FFFFFF"));
 					
@@ -636,32 +839,45 @@ public class GroupChatActivity extends AppCompatActivity {
 				else {
 					linear_main.setGravity(Gravity.CENTER_VERTICAL|Gravity.LEFT);
 					linear_item.setGravity(Gravity.CENTER_VERTICAL|Gravity.LEFT);
+					tx_message.setTextColor(0xFF000000);
+					_setRadius(_position, false, _data, linear_message);
+					_setRadius(_position, false, _data, l_voice);
+					tx_voice_name.setTextColor(0xFF000000);
+					im_play.setColorFilter(0xFF607D8B, PorterDuff.Mode.MULTIPLY);
+					seekbar1.getProgressDrawable().setColorFilter(Color.parseColor("#008DCD"), PorterDuff.Mode.SRC_IN);
+					seekbar1.getThumb().setColorFilter(Color.parseColor("#008DCD"), PorterDuff.Mode.SRC_IN);
 					tx_message.setAutoLinkMask(android.text.util.Linkify.ALL);
 					    tx_message.setLinkTextColor(Color.parseColor("#008DCD"));
 					
 					tx_message.setMovementMethod(android.text.method.LinkMovementMethod.getInstance());
 				}
-				c_bind.setTimeInMillis((long)(Double.parseDouble(_data.get((int)_position).get("timestamp").toString())));
-				if (_data.get((int)_position).containsKey("image")) {
-					linear_item.setVisibility(View.VISIBLE);
-					Glide.with(getApplicationContext()).load(Uri.parse(_data.get((int)_position).get("image").toString())).into(imageview1);
-				}
-				else {
-					
-				}
-				if (_data.get((int)_position).containsKey("message")) {
-					linear_msg.setVisibility(View.VISIBLE);
-					tx_sender_message.setText(_data.get((int)_position).get("message").toString());
-				}
-				else {
-					
-				}
-				tx_msg_time.setText(new SimpleDateFormat("dd MMM, hh:mm a").format(c_bind.getTime()));
-				textview2.setText(_data.get((int)_position).get("username").toString());
 				linear_main.setVisibility(View.VISIBLE);
 			}
 			else {
 				linear_main.setVisibility(View.GONE);
+			}
+			c_bind.setTimeInMillis((long)(Double.parseDouble(_data.get((int)_position).get("timestamp").toString())));
+			tx_msg_time.setText(new SimpleDateFormat("dd MMM, hh:mm a").format(c_bind.getTime()));
+			textview2.setText(_data.get((int)_position).get("username").toString());
+			if (_data.get((int)_position).containsKey("message")) {
+				linear_message.setVisibility(View.VISIBLE);
+				tx_sender_message.setText(_data.get((int)_position).get("message").toString());
+			}
+			else {
+				linear_message.setVisibility(View.GONE);
+			}
+			if (_data.get((int)_position).containsKey("image")) {
+				imageview1.setVisibility(View.VISIBLE);
+				Glide.with(getApplicationContext()).load(Uri.parse(_data.get((int)_position).get("image").toString())).into(imageview1);
+				imageview1.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View _view) {
+						
+					}
+				});
+			}
+			else {
+				imageview1.setVisibility(View.GONE);
 			}
 			
 			return _view;

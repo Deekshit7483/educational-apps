@@ -2,8 +2,10 @@ package com.my.newproject52;
 
 import android.animation.*;
 import android.app.*;
+import android.app.Activity;
 import android.content.*;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.*;
 import android.graphics.*;
 import android.graphics.drawable.*;
@@ -34,6 +36,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.OnAdapterChangeListener;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -49,26 +56,33 @@ import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+//import de.hdodenhof.circleimageview.*;
 import java.io.*;
 import java.text.*;
 import java.util.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.regex.*;
 import org.json.*;
 
 public class HomeActivity extends AppCompatActivity {
 	
+	private Timer _timer = new Timer();
 	private FirebaseDatabase _firebase = FirebaseDatabase.getInstance();
 	
 	private String groupstr = "";
 	private HashMap<String, Object> m = new HashMap<>();
 	private HashMap<String, Object> mm = new HashMap<>();
 	private String share = "";
+	private double position = 0;
+	private double num = 0;
 	
 	private ArrayList<HashMap<String, Object>> list = new ArrayList<>();
 	private ArrayList<HashMap<String, Object>> totalgroup = new ArrayList<>();
 	private ArrayList<HashMap<String, Object>> slist = new ArrayList<>();
+	private ArrayList<HashMap<String, Object>> listmap = new ArrayList<>();
 	
 	private LinearLayout vscroll1;
 	private LinearLayout background;
@@ -79,14 +93,45 @@ public class HomeActivity extends AppCompatActivity {
 	private LinearLayout page4;
 	private ScrollView vscroll2;
 	private LinearLayout linear2;
+	private ViewPager viewpager_slider;
 	private ImageView imageview2;
 	private TextView textview100;
 	private Button button1;
+	private LinearLayout linear11;
+	private LinearLayout linear19;
+	private LinearLayout linear13;
+	private LinearLayout linear14;
+	private LinearLayout linear15;
+	private LinearLayout linear16;
+	private TextView textview5;
+	private ImageView imageview6;
+	private LinearLayout linear17;
+	private TextView textview4;
+	private ImageView imageview7;
+	private LinearLayout linear18;
+	private TextView textview6;
+	private ImageView imageview8;
+	private LinearLayout linear20;
+	private LinearLayout linear21;
+	private LinearLayout linear22;
+	private LinearLayout linear23;
+	private TextView textview7;
+	private ImageView imageview9;
+	private LinearLayout linear24;
+	private TextView textview8;
+	private ImageView imageview10;
+	private LinearLayout linear25;
+	private TextView textview9;
+	private ImageView imageview11;
 	private ListView listview3;
 	private ListView listview2;
+	private ScrollView vscroll3;
 	private LinearLayout linear1099;
-	private LinearLayout linear3;
+	private LinearLayout linear1110;
 	private LinearLayout l_profile;
+	private LinearLayout linear1076;
+	private LinearLayout l_avg;
+	private LinearLayout linear1080;
 	private LinearLayout linear1101;
 	private TextView textview99;
 	private LinearLayout linear1105;
@@ -94,12 +139,53 @@ public class HomeActivity extends AppCompatActivity {
 	private LinearLayout linear1073;
 	private LinearLayout linear9;
 	private LinearLayout linear10;
+	private LinearLayout linear1074;
 	private LinearLayout linear1075;
-	private ImageView imageview89;
+//	private CircleImageView circleimageview1;
 	private TextView name;
 	private ImageView imageview84;
 	private ImageView imageview67;
 	private TextView clg;
+	private LinearLayout l_year;
+	private LinearLayout l_badge;
+	private LinearLayout l_age;
+	private TextView textview76;
+	private TextView study;
+	private TextView textview78;
+	private ImageView imageview68;
+	private TextView textview79;
+	private TextView age;
+	private LinearLayout linear1104;
+	private LinearLayout linear1077;
+	private LinearLayout linear1078;
+	private TextView textview101;
+	private TextView type;
+	private ImageView imageview69;
+	private TextView phone;
+	private ImageView imageview70;
+	private TextView email;
+	private LinearLayout linear1117;
+	private LinearLayout linear1118;
+	private LinearLayout linear1119;
+	private LinearLayout linear1120;
+	private LinearLayout l_average1;
+	private TextView textview107;
+	private LinearLayout ll_average1;
+	private TextView textview104;
+	private LinearLayout l_average;
+	private TextView textview109;
+	private LinearLayout ll_average;
+	private TextView textview102;
+	private LinearLayout l_average2;
+	private TextView textview110;
+	private LinearLayout ll_average2;
+	private TextView textview105;
+	private LinearLayout l_average3;
+	private TextView textview111;
+	private LinearLayout ll_average3;
+	private TextView textview106;
+	private TextView textview83;
+	private TextView textview85;
 	private TextView textview87;
 	private TextView textview88;
 	private LinearLayout back2;
@@ -140,6 +226,8 @@ public class HomeActivity extends AppCompatActivity {
 	private ChildEventListener _groups_child_listener;
 	private DatabaseReference users = _firebase.getReference("users");
 	private ChildEventListener _users_child_listener;
+	private TimerTask timer;
+	private SharedPreferences img;
 	
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
@@ -160,14 +248,45 @@ public class HomeActivity extends AppCompatActivity {
 		page4 = findViewById(R.id.page4);
 		vscroll2 = findViewById(R.id.vscroll2);
 		linear2 = findViewById(R.id.linear2);
+		viewpager_slider = findViewById(R.id.viewpager_slider);
 		imageview2 = findViewById(R.id.imageview2);
 		textview100 = findViewById(R.id.textview100);
 		button1 = findViewById(R.id.button1);
+		linear11 = findViewById(R.id.linear11);
+		linear19 = findViewById(R.id.linear19);
+		linear13 = findViewById(R.id.linear13);
+		linear14 = findViewById(R.id.linear14);
+		linear15 = findViewById(R.id.linear15);
+		linear16 = findViewById(R.id.linear16);
+		textview5 = findViewById(R.id.textview5);
+		imageview6 = findViewById(R.id.imageview6);
+		linear17 = findViewById(R.id.linear17);
+		textview4 = findViewById(R.id.textview4);
+		imageview7 = findViewById(R.id.imageview7);
+		linear18 = findViewById(R.id.linear18);
+		textview6 = findViewById(R.id.textview6);
+		imageview8 = findViewById(R.id.imageview8);
+		linear20 = findViewById(R.id.linear20);
+		linear21 = findViewById(R.id.linear21);
+		linear22 = findViewById(R.id.linear22);
+		linear23 = findViewById(R.id.linear23);
+		textview7 = findViewById(R.id.textview7);
+		imageview9 = findViewById(R.id.imageview9);
+		linear24 = findViewById(R.id.linear24);
+		textview8 = findViewById(R.id.textview8);
+		imageview10 = findViewById(R.id.imageview10);
+		linear25 = findViewById(R.id.linear25);
+		textview9 = findViewById(R.id.textview9);
+		imageview11 = findViewById(R.id.imageview11);
 		listview3 = findViewById(R.id.listview3);
 		listview2 = findViewById(R.id.listview2);
+		vscroll3 = findViewById(R.id.vscroll3);
 		linear1099 = findViewById(R.id.linear1099);
-		linear3 = findViewById(R.id.linear3);
+		linear1110 = findViewById(R.id.linear1110);
 		l_profile = findViewById(R.id.l_profile);
+		linear1076 = findViewById(R.id.linear1076);
+		l_avg = findViewById(R.id.l_avg);
+		linear1080 = findViewById(R.id.linear1080);
 		linear1101 = findViewById(R.id.linear1101);
 		textview99 = findViewById(R.id.textview99);
 		linear1105 = findViewById(R.id.linear1105);
@@ -175,12 +294,53 @@ public class HomeActivity extends AppCompatActivity {
 		linear1073 = findViewById(R.id.linear1073);
 		linear9 = findViewById(R.id.linear9);
 		linear10 = findViewById(R.id.linear10);
+		linear1074 = findViewById(R.id.linear1074);
 		linear1075 = findViewById(R.id.linear1075);
-		imageview89 = findViewById(R.id.imageview89);
+//		circleimageview1 = findViewById(R.id.circleimageview1);
 		name = findViewById(R.id.name);
 		imageview84 = findViewById(R.id.imageview84);
 		imageview67 = findViewById(R.id.imageview67);
 		clg = findViewById(R.id.clg);
+		l_year = findViewById(R.id.l_year);
+		l_badge = findViewById(R.id.l_badge);
+		l_age = findViewById(R.id.l_age);
+		textview76 = findViewById(R.id.textview76);
+		study = findViewById(R.id.study);
+		textview78 = findViewById(R.id.textview78);
+		imageview68 = findViewById(R.id.imageview68);
+		textview79 = findViewById(R.id.textview79);
+		age = findViewById(R.id.age);
+		linear1104 = findViewById(R.id.linear1104);
+		linear1077 = findViewById(R.id.linear1077);
+		linear1078 = findViewById(R.id.linear1078);
+		textview101 = findViewById(R.id.textview101);
+		type = findViewById(R.id.type);
+		imageview69 = findViewById(R.id.imageview69);
+		phone = findViewById(R.id.phone);
+		imageview70 = findViewById(R.id.imageview70);
+		email = findViewById(R.id.email);
+		linear1117 = findViewById(R.id.linear1117);
+		linear1118 = findViewById(R.id.linear1118);
+		linear1119 = findViewById(R.id.linear1119);
+		linear1120 = findViewById(R.id.linear1120);
+		l_average1 = findViewById(R.id.l_average1);
+		textview107 = findViewById(R.id.textview107);
+		ll_average1 = findViewById(R.id.ll_average1);
+		textview104 = findViewById(R.id.textview104);
+		l_average = findViewById(R.id.l_average);
+		textview109 = findViewById(R.id.textview109);
+		ll_average = findViewById(R.id.ll_average);
+		textview102 = findViewById(R.id.textview102);
+		l_average2 = findViewById(R.id.l_average2);
+		textview110 = findViewById(R.id.textview110);
+		ll_average2 = findViewById(R.id.ll_average2);
+		textview105 = findViewById(R.id.textview105);
+		l_average3 = findViewById(R.id.l_average3);
+		textview111 = findViewById(R.id.textview111);
+		ll_average3 = findViewById(R.id.ll_average3);
+		textview106 = findViewById(R.id.textview106);
+		textview83 = findViewById(R.id.textview83);
+		textview85 = findViewById(R.id.textview85);
 		textview87 = findViewById(R.id.textview87);
 		textview88 = findViewById(R.id.textview88);
 		back2 = findViewById(R.id.back2);
@@ -204,6 +364,25 @@ public class HomeActivity extends AppCompatActivity {
 		img4 = findViewById(R.id.img4);
 		t4 = findViewById(R.id.t4);
 		fauth = FirebaseAuth.getInstance();
+		img = getSharedPreferences("img", Activity.MODE_PRIVATE);
+		
+		viewpager_slider.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+			@Override
+			public void onPageScrolled(int _position, float _positionOffset, int _positionOffsetPixels) {
+				
+			}
+			
+			@Override
+			public void onPageSelected(int _position) {
+				position = _position;
+				num = _position;
+			}
+			
+			@Override
+			public void onPageScrollStateChanged(int _scrollState) {
+				
+			}
+		});
 		
 		imageview2.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -229,6 +408,14 @@ public class HomeActivity extends AppCompatActivity {
 			}
 		});
 		
+		linear16.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				i.setClass(getApplicationContext(), CreateGroupActivity.class);
+				startActivity(i);
+			}
+		});
+		
 		listview2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> _param1, View _param2, int _param3, long _param4) {
@@ -239,78 +426,6 @@ public class HomeActivity extends AppCompatActivity {
 				i.putExtra("group dp", list.get((int)_position).get("group dp").toString());
 				i.putExtra("admin", list.get((int)_position).get("uid").toString());
 				startActivity(i);
-			}
-		});
-		
-		imageview88.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View _view) {
-				final com.google.android.material.bottomsheet.BottomSheetDialog bottomSheetDialog = new com.google.android.material.bottomsheet.BottomSheetDialog(HomeActivity.this);
-				
-				View bottomSheetView; bottomSheetView = getLayoutInflater().inflate(R.layout.bottom_sheet,null );
-				bottomSheetDialog.setContentView(bottomSheetView);
-				
-				bottomSheetDialog.getWindow().findViewById(R.id.design_bottom_sheet).setBackgroundResource(android.R.color.transparent);
-				TextView t1 = (TextView) bottomSheetView.findViewById(R.id.t1);
-				
-				TextView t2 = (TextView) bottomSheetView.findViewById(R.id.t2);
-				
-				TextView t3 = (TextView) bottomSheetView.findViewById(R.id.t3);
-				
-				TextView t4 = (TextView) bottomSheetView.findViewById(R.id.t4);
-				
-				ImageView i1 = (ImageView) bottomSheetView.findViewById(R.id.i1);
-				
-				ImageView i2 = (ImageView) bottomSheetView.findViewById(R.id.i2);
-				
-				ImageView i3 = (ImageView) bottomSheetView.findViewById(R.id.i3);
-				
-				ImageView i4 = (ImageView) bottomSheetView.findViewById(R.id.i4);
-				
-				ImageView i5 = (ImageView) bottomSheetView.findViewById(R.id.i5);
-				
-				LinearLayout bg1 = (LinearLayout) bottomSheetView.findViewById(R.id.bg1);
-				
-				LinearLayout linear2 = (LinearLayout) bottomSheetView.findViewById(R.id.linear2);
-				
-				LinearLayout linear3 = (LinearLayout) bottomSheetView.findViewById(R.id.linear3);
-				
-				LinearLayout linear4 = (LinearLayout) bottomSheetView.findViewById(R.id.linear4);
-				
-				LinearLayout bg = (LinearLayout) bottomSheetView.findViewById(R.id.bg);
-				_rippleRoundStroke(bg1, "#FFFFFF", "#E0E0E0", 0, 0, "#000000");
-				_rippleRoundStroke(linear2, "#FFFFFF", "#E0E0E0", 0, 0, "#000000");
-				_rippleRoundStroke(linear3, "#FFFFFF", "#E0E0E0", 0, 0, "#000000");
-				_rippleRoundStroke(linear4, "#FFFFFF", "#E0E0E0", 0, 0, "#000000");
-				_rippleRoundStroke(i5, "#FFFFFF", "#E0E0E0", 50, 0, "#000000");
-				bg1.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
-						
-						i.setClass(getApplicationContext(), EditProfileActivity.class);
-						startActivity(i);
-					}
-				});
-				linear2.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
-						
-					}
-				});
-				linear3.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
-						
-						FirebaseAuth.getInstance().signOut();
-						i.setClass(getApplicationContext(), LoginActivity.class);
-						startActivity(i);
-					}
-				});
-				linear4.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
-						share = "https://www.vidyavan.in/?type=user&id=".concat(FirebaseAuth.getInstance().getCurrentUser().getUid());
-						Intent i = new Intent(android.content.Intent.ACTION_SEND); i.setType("text/plain"); i.putExtra(android.content.Intent.EXTRA_TEXT,share); startActivity(Intent.createChooser(i,"Choose one.."));
-					}
-				});
-				i5.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
-						bottomSheetDialog.dismiss();
-					}
-				});
-				bottomSheetDialog.setCancelable(true);
-				bottomSheetDialog.show();
 			}
 		});
 		
@@ -651,17 +766,135 @@ public class HomeActivity extends AppCompatActivity {
 		page2.setVisibility(View.GONE);
 		page3.setVisibility(View.GONE);
 		page4.setVisibility(View.GONE);
-		_borderline(l_profile, "#ffffff", 1.5d, "#9e9e9e", 20);
-		linear1101.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b, int c, int d) { this.setCornerRadius(a); this.setStroke(b, c); this.setColor(d); return this; } }.getIns((int)20, (int)1.2d, 0xFF673AB7, 0xFFEDE7F6));
-		linear1099.setBackgroundColor(0xFFF5F5F5);
-		linear1101.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b, int c, int d) { this.setCornerRadius(a); this.setStroke(b, c); this.setColor(d); return this; } }.getIns((int)20, (int)1.2d, 0xFF673AB7, 0xFFEDE7F6));
-		{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT, new int[]{
+		if (img.getString("img1", "").equals("")) {
+			{
+				HashMap<String, Object> _item = new HashMap<>();
+				_item.put("img", "https://firebasestorage.googleapis.com/v0/b/notification-67814.appspot.com/o/pexels-pixabay-46174.jpg?alt=media&token=1f51eaaa-4bc5-461f-97d7-3d80615fcf29");
+				listmap.add(_item);
+			}
+			
+			{
+				HashMap<String, Object> _item = new HashMap<>();
+				_item.put("img", "https://firebasestorage.googleapis.com/v0/b/notification-67814.appspot.com/o/pexels-maria-orlova-4916298.jpg?alt=media&token=0e18dd60-360a-43c8-aca8-77ec42bf3472");
+				listmap.add(_item);
+			}
+			
+			{
+				HashMap<String, Object> _item = new HashMap<>();
+				_item.put("img", "https://firebasestorage.googleapis.com/v0/b/notification-67814.appspot.com/o/pexels-matheus-cenali-2733918.jpg?alt=media&token=b40b1067-cd04-4d9b-9148-2326fd0de0dd");
+				listmap.add(_item);
+			}
+			
+			{
+				HashMap<String, Object> _item = new HashMap<>();
+				_item.put("img", "https://firebasestorage.googleapis.com/v0/b/notification-67814.appspot.com/o/pexels-anna-shvets-3987223.jpg?alt=media&token=7eeed4c4-1f56-42c0-8e5a-11e93cfb4f7d");
+				listmap.add(_item);
+			}
+			
+		}
+		else {
+			{
+				HashMap<String, Object> _item = new HashMap<>();
+				_item.put("img", img.getString("img1", ""));
+				listmap.add(_item);
+			}
+			
+			{
+				HashMap<String, Object> _item = new HashMap<>();
+				_item.put("img", img.getString("img2", ""));
+				listmap.add(_item);
+			}
+			
+			{
+				HashMap<String, Object> _item = new HashMap<>();
+				_item.put("img", img.getString("img3", ""));
+				listmap.add(_item);
+			}
+			
+			{
+				HashMap<String, Object> _item = new HashMap<>();
+				_item.put("img", img.getString("img4", ""));
+				listmap.add(_item);
+			}
+			
+		}
+		final float scaleFactor = 0.90f; viewpager_slider.setPageMargin(-30); viewpager_slider.setOffscreenPageLimit(2); viewpager_slider.setPageTransformer(false, new ViewPager.PageTransformer() { @Override public void transformPage(@NonNull View page1, float position) { page1.setScaleY((1 - Math.abs(position) * (1 - scaleFactor))); page1.setScaleX(scaleFactor + Math.abs(position) * (1 - scaleFactor)); } });
+		viewpager_slider.setAdapter(new Viewpager_sliderAdapter(listmap));
+		position = 0;
+		num = 0;
+		timer = new TimerTask() {
+			@Override
+			public void run() {
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						viewpager_slider.setCurrentItem((int)num);
+						num++;
+						if (num == listmap.size()) {
+							num = 0;
+						}
+					}
+				});
+			}
+		};
+		_timer.scheduleAtFixedRate(timer, (int)(0), (int)(2000));
+		_content();
+		{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.TOP_BOTTOM, new int[]{
+				0xFF9C27B0,
+				0xFFE040FB,
+			});
+			gd.setCornerRadius(150);
+			l_average3.setBackgroundDrawable(gd);
+			l_average3.setElevation(8);};
+		{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.TOP_BOTTOM, new int[]{
 				0xFFFFFFFF,
 				0xFFFFFFFF,
 			});
-			gd.setCornerRadius(20);
-			l_profile.setBackgroundDrawable(gd);
-			l_profile.setElevation(8);};
+			gd.setCornerRadius(150);
+			ll_average3.setBackgroundDrawable(gd);
+			ll_average3.setElevation(8);};
+		{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.TOP_BOTTOM, new int[]{
+				0xFF4CAF50,
+				0xFF00E676,
+			});
+			gd.setCornerRadius(150);
+			l_average2.setBackgroundDrawable(gd);
+			l_average2.setElevation(8);};
+		{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.TOP_BOTTOM, new int[]{
+				0xFFFFFFFF,
+				0xFFFFFFFF,
+			});
+			gd.setCornerRadius(150);
+			ll_average2.setBackgroundDrawable(gd);
+			ll_average2.setElevation(8);};
+		{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.TOP_BOTTOM, new int[]{
+				0xFFFF5722,
+				0xFFFF6E40,
+			});
+			gd.setCornerRadius(150);
+			l_average.setBackgroundDrawable(gd);
+			l_average.setElevation(8);};
+		{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.TOP_BOTTOM, new int[]{
+				0xFFFFFFFF,
+				0xFFFFFFFF,
+			});
+			gd.setCornerRadius(150);
+			ll_average.setBackgroundDrawable(gd);
+			ll_average.setElevation(8);};
+		{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.TOP_BOTTOM, new int[]{
+				0xFF3F51B5,
+				0xFF536DFE,
+			});
+			gd.setCornerRadius(150);
+			l_average1.setBackgroundDrawable(gd);
+			l_average1.setElevation(8);};
+		{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.TOP_BOTTOM, new int[]{
+				0xFFFFFFFF,
+				0xFFFFFFFF,
+			});
+			gd.setCornerRadius(150);
+			ll_average1.setBackgroundDrawable(gd);
+			ll_average1.setElevation(8);};
 	}
 	
 	@Override
@@ -734,6 +967,151 @@ public class HomeActivity extends AppCompatActivity {
 		_view.setBackground(gd);
 	}
 	
+	
+	public void _content() {
+		_borderline(l_profile, "#ffffff", 1.5d, "#9e9e9e", 20);
+		_borderline(linear1076, "#ffffff", 1.5d, "#9e9e9e", 20);
+		{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT, new int[]{
+				0xFFFFCDD2,
+				0xFFF8BBD0,
+			});
+			gd.setCornerRadius(20);
+			l_year.setBackgroundDrawable(gd);
+			l_year.setElevation(8);};
+		{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT, new int[]{
+				0xFFE1BEE7,
+				0xFFD1C4E9,
+			});
+			gd.setCornerRadius(20);
+			l_badge.setBackgroundDrawable(gd);
+			l_badge.setElevation(8);};
+		{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT, new int[]{
+				0xFFFFE0B2,
+				0xFFFFCCBC,
+			});
+			gd.setCornerRadius(20);
+			l_age.setBackgroundDrawable(gd);
+			l_age.setElevation(8);};
+		{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT, new int[]{
+				0xFFFFFFFF,
+				0xFFFFFFFF,
+			});
+			gd.setCornerRadius(20);
+			l_profile.setBackgroundDrawable(gd);
+			l_profile.setElevation(8);};
+		{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT, new int[]{
+				0xFFFFFFFF,
+				0xFFFFFFFF,
+			});
+			gd.setCornerRadius(20);
+			linear1076.setBackgroundDrawable(gd);
+			linear1076.setElevation(8);};
+		linear1080.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b, int c, int d) { this.setCornerRadius(a); this.setStroke(b, c); this.setColor(d); return this; } }.getIns((int)20, (int)1.2d, 0xFF673AB7, 0xFFEDE7F6));
+		linear1101.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b, int c, int d) { this.setCornerRadius(a); this.setStroke(b, c); this.setColor(d); return this; } }.getIns((int)20, (int)1.2d, 0xFF673AB7, 0xFFEDE7F6));
+		linear1099.setBackgroundColor(0xFFF5F5F5);
+		linear1101.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b, int c, int d) { this.setCornerRadius(a); this.setStroke(b, c); this.setColor(d); return this; } }.getIns((int)20, (int)1.2d, 0xFF673AB7, 0xFFEDE7F6));
+		linear1110.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b, int c, int d) { this.setCornerRadius(a); this.setStroke(b, c); this.setColor(d); return this; } }.getIns((int)20, (int)1.2d, 0xFF673AB7, 0xFFEDE7F6));
+		{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT, new int[]{
+				0xFF9FA8DA,
+				0xFF8C9EFF,
+			});
+			gd.setCornerRadius(20);
+			linear16.setBackgroundDrawable(gd);
+			linear16.setElevation(5);};
+		{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT, new int[]{
+				0xFF90CAF9,
+				0xFFBBDEFB,
+			});
+			gd.setCornerRadius(20);
+			linear17.setBackgroundDrawable(gd);
+			linear17.setElevation(5);};
+		{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT, new int[]{
+				0xFFFFE082,
+				0xFFFFD180,
+			});
+			gd.setCornerRadius(20);
+			linear18.setBackgroundDrawable(gd);
+			linear18.setElevation(5);};
+		{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT, new int[]{
+				0xFFDCEDC8,
+				0xFF81C784,
+			});
+			gd.setCornerRadius(20);
+			linear23.setBackgroundDrawable(gd);
+			linear23.setElevation(5);};
+		{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT, new int[]{
+				0xFFE57373,
+				0xFFFFCDD2,
+			});
+			gd.setCornerRadius(20);
+			linear24.setBackgroundDrawable(gd);
+			linear24.setElevation(5);};
+		{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT, new int[]{
+				0xFFE1BEE7,
+				0xFFBA68C8,
+			});
+			gd.setCornerRadius(20);
+			linear25.setBackgroundDrawable(gd);
+			linear25.setElevation(5);};
+	}
+	
+	public class Viewpager_sliderAdapter extends PagerAdapter {
+		
+		Context _context;
+		ArrayList<HashMap<String, Object>> _data;
+		
+		public Viewpager_sliderAdapter(Context _ctx, ArrayList<HashMap<String, Object>> _arr) {
+			_context = _ctx;
+			_data = _arr;
+		}
+		
+		public Viewpager_sliderAdapter(ArrayList<HashMap<String, Object>> _arr) {
+			_context = getApplicationContext();
+			_data = _arr;
+		}
+		
+		@Override
+		public int getCount() {
+			return _data.size();
+		}
+		
+		@Override
+		public boolean isViewFromObject(View _view, Object _object) {
+			return _view == _object;
+		}
+		
+		@Override
+		public void destroyItem(ViewGroup _container, int _position, Object _object) {
+			_container.removeView((View) _object);
+		}
+		
+		@Override
+		public int getItemPosition(Object _object) {
+			return super.getItemPosition(_object);
+		}
+		
+		@Override
+		public CharSequence getPageTitle(int pos) {
+			// Use the Activity Event (onTabLayoutNewTabAdded) in order to use this method
+			return "page " + String.valueOf(pos);
+		}
+		
+		@Override
+		public Object instantiateItem(ViewGroup _container,  final int _position) {
+			View _view = LayoutInflater.from(_context).inflate(R.layout.silder, _container, false);
+			
+			final androidx.cardview.widget.CardView cardview1 = _view.findViewById(R.id.cardview1);
+			final ImageView imageview1 = _view.findViewById(R.id.imageview1);
+			
+			Glide.with(getApplicationContext()).load(Uri.parse(_data.get((int)_position).get("img").toString())).into(imageview1);
+			cardview1.setCardElevation((float)12);
+			cardview1.setRadius((float)10);
+			
+			_container.addView(_view);
+			return _view;
+		}
+	}
+	
 	public class Listview3Adapter extends BaseAdapter {
 		
 		ArrayList<HashMap<String, Object>> _data;
@@ -772,13 +1150,7 @@ public class HomeActivity extends AppCompatActivity {
 			
 			button1.setVisibility(View.GONE);
 			textview1.setText(_data.get((int)_position).get("group name").toString());
-			{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT, new int[]{
-					0xFF9E9E9E,
-					0xFF9E9E9E,
-				});
-				gd.setCornerRadius(15);
-				linear1.setBackgroundDrawable(gd);
-				linear1.setElevation(15);};
+			_rippleRoundStroke(linear1, "#FFFFFF", "#6DD5ED", 15, 3, "#008DCD");
 			linear1.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View _view) {
@@ -831,23 +1203,17 @@ public class HomeActivity extends AppCompatActivity {
 			final TextView textview1 = _view.findViewById(R.id.textview1);
 			final Button button1 = _view.findViewById(R.id.button1);
 			
+			button1.setVisibility(View.GONE);
 			if (_data.get((int)_position).containsKey("group name")) {
 				textview1.setText(_data.get((int)_position).get("group name").toString());
 			}
-			{android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT, new int[]{
-					0xFF9E9E9E,
-					0xFF9E9E9E,
-				});
-				gd.setCornerRadius(15);
-				linear1.setBackgroundDrawable(gd);
-				linear1.setElevation(15);};
 			if (groupstr.contains(_data.get((int)_position).get("key").toString())) {
 				button1.setText("Open");
 			}
 			else {
 				button1.setText("Join now");
 			}
-			button1.setOnClickListener(new View.OnClickListener() {
+			linear1.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View _view) {
 					if (groupstr.contains(_data.get((int)_position).get("key").toString())) {
@@ -928,6 +1294,7 @@ public class HomeActivity extends AppCompatActivity {
 								i.putExtra("group dp", _data.get((int)_position).get("group dp").toString());
 								i.putExtra("admin", _data.get((int)_position).get("uid").toString());
 								startActivity(i);
+								a.dismiss();
 							}
 						});
 						cancel.setOnClickListener(new View.OnClickListener(){
@@ -940,17 +1307,7 @@ public class HomeActivity extends AppCompatActivity {
 					}
 				}
 			});
-			linear1.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View _view) {
-					i.setClass(getApplicationContext(), GroupChatActivity.class);
-					i.putExtra("group name", _data.get((int)_position).get("group name").toString());
-					i.putExtra("group id", _data.get((int)_position).get("key").toString());
-					i.putExtra("group dp", _data.get((int)_position).get("group dp").toString());
-					i.putExtra("admin", _data.get((int)_position).get("uid").toString());
-					startActivity(i);
-				}
-			});
+			_rippleRoundStroke(linear1, "#FFFFFF", "#6DD5ED", 15, 3, "#008DCD");
 			
 			return _view;
 		}
@@ -1006,4 +1363,4 @@ public class HomeActivity extends AppCompatActivity {
 	public int getDisplayHeightPixels() {
 		return getResources().getDisplayMetrics().heightPixels;
 	}
-}
+}

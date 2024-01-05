@@ -96,6 +96,12 @@
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:supportsPictureInPicture="true" />
+        <activity
+            android:name="com.my.newproject52.TodolistActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
+            android:supportsPictureInPicture="true" />
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -125,6 +131,24 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
+        <activity
+            android:name="com.my.newproject52.SplashActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="com.uptime.club.LAUNCH" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="pes.sloutionsfortech.in"
+                    android:scheme="https" />
+                <data
+                    android:host="pes.sloutionsfortech.in"
+                    android:scheme="http" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
             android:excludeFromRecents="true"
