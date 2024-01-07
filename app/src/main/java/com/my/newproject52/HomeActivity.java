@@ -77,7 +77,7 @@ public class HomeActivity extends AppCompatActivity {
 	private HashMap<String, Object> mm = new HashMap<>();
 	private String share = "";
 	private double position = 0;
-	private double num = 0;
+	private double num = 0;`
 	
 	private ArrayList<HashMap<String, Object>> list = new ArrayList<>();
 	private ArrayList<HashMap<String, Object>> totalgroup = new ArrayList<>();

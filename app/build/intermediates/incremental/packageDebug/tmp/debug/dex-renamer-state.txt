@@ -1,7 +1,7 @@
-#Fri Jan 05 22:57:17 GMT 2024
-base.0=/home/chandan/Downloads/NewProject52 (2)/NewProject52/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
-base.1=/home/chandan/Downloads/NewProject52 (2)/NewProject52/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
-base.2=/home/chandan/Downloads/NewProject52 (2)/NewProject52/app/build/intermediates/dex/debug/mergeProjectDexDebug/9/classes.dex
+#Sat Jan 06 10:29:53 IST 2024
+base.0=/home/deekshith/Documents/educational-apps/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/home/deekshith/Documents/educational-apps/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.2=/home/deekshith/Documents/educational-apps/app/build/intermediates/dex/debug/mergeProjectDexDebug/9/classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=9/classes.dex
